@@ -76,7 +76,7 @@ function Ball:resetPositon(modifier)
   self.x = love.graphics.getWidth() / 2 - self.width / 2
   self.y = love.graphics.getHeight() / 2 - self.height / 2
   self.yVel = 0
-  self.xVel = modifier
+  self.xVel = self.speed * modifier
 end
 
 function Ball:draw()
