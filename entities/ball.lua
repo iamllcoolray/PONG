@@ -24,12 +24,13 @@ function Ball:movement(dt)
 end
 
 function Ball:collision()
-  self:paddleCollision()
+  self:paddleCollisionPlayer()
+  self:paddleCollisionAI()
   self:windowCollision()
   self:score()
 end
 
-function Ball:paddleCollision()
+function Ball:paddleCollisionPlayer()
   if checkCollision(self, Player) then
     self.xVel = self.speed
     local middleBall = self.y + self.height / 2
@@ -37,7 +38,9 @@ function Ball:paddleCollision()
     local collisionPosition = middleBall - middlePlayer
     self.yVel = collisionPosition * 5
   end
+end
 
+function Ball:paddleCollisionAI()
   if checkCollision(self, AI) then
     self.xVel = -self.speed
     local middleBall = self.y + self.height / 2
