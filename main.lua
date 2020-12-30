@@ -12,6 +12,8 @@ function love.load()
   Score = {player = 0, ai = 0}
   font = love.graphics.newFont("assets/audiowide.ttf", 30)
   gameOver = false
+  victory = love.audio.newSource("audio/victory.mp3", "static")
+  evil_laugh = love.audio.newSource("audio/evil-laugh.mp3", "static")
 end
 
 function love.update(dt)
@@ -21,13 +23,21 @@ function love.update(dt)
   AI:update(dt)
 
   gameRestart()
+  if Score.player > 9 then
+    victory:play()
+  elseif Score.ai > 9 then
+    evil_laugh:play()
+  end
 end
 
 function love.draw()
   Background:draw()
   AI:draw()
   Player:draw()
-  if Score.player > 9 or Score.ai > 9 then
+  if Score.player > 9 then
+    love.graphics.print("Press \'r\' to restart", (love.graphics.getWidth() / 2) - 150, love.graphics.getHeight() / 2)
+    gameOver = true
+  elseif Score.ai > 9 then
     love.graphics.print("Press \'r\' to restart", (love.graphics.getWidth() / 2) - 150, love.graphics.getHeight() / 2)
     gameOver = true
   else
