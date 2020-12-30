@@ -11,6 +11,7 @@ function Ball:load()
   self.speed = 200
   self.xVel = -self.speed
   self.yVel = 0
+  self.blop = love.audio.newSource("audio/blop.mp3", "static")
 end
 
 function Ball:update(dt)
@@ -37,6 +38,7 @@ function Ball:paddleCollisionPlayer()
     local middlePlayer = Player.y + Player.height / 2
     local collisionPosition = middleBall - middlePlayer
     self.yVel = collisionPosition * 5
+    self.blop:play()
   end
 end
 
@@ -47,6 +49,7 @@ function Ball:paddleCollisionAI()
     local middleAI = AI.y + AI.height / 2
     local collisionPosition = middleBall - middleAI
     self.yVel = collisionPosition * 5
+    self.blop:play()
   end
 end
 
@@ -54,9 +57,11 @@ function Ball:windowCollision()
   if self.y < 0 then
     self.y = 0
     self.yVel = -self.yVel
+    self.blop:play()
   elseif self.y + self.height > love.graphics.getHeight() then
     self.y = love.graphics.getHeight() - self.height
     self.yVel = -self.yVel
+    self.blop:play()
   end
 end
 
