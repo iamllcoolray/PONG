@@ -11,6 +11,7 @@ function love.load()
 
   Score = {player = 0, ai = 0}
   font = love.graphics.newFont("assets/audiowide.ttf", 30)
+  gameOver = false
 end
 
 function love.update(dt)
@@ -18,14 +19,20 @@ function love.update(dt)
   Player:update(dt)
   Ball:update(dt)
   AI:update(dt)
+
+  gameStart()
 end
 
 function love.draw()
   Background:draw()
-  Player:draw()
-  Ball:draw()
   AI:draw()
-
+  Player:draw()
+  if Score.player > 9 or Score.ai > 9 then
+    love.graphics.print("Press \'r\' to restart", (love.graphics.getWidth() / 2) - 150, love.graphics.getHeight() / 2)
+    gameOver = true
+  else
+    Ball:draw()
+  end
   drawScore()
 end
 
@@ -40,5 +47,13 @@ function checkCollision(a, b)
     return true
   else
     return false
+  end
+end
+
+function gameStart()
+  if gameOver == true and love.keyboard.isDown("r") then
+    Score.player = 0
+    Score.ai = 0
+    gameOver = false
   end
 end
