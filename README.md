@@ -8,6 +8,8 @@ Pong - recreation of the famous 2D Atari game.
 
 This version of Pong is recreation of the famous 2D Atari game, but in space.
 
+## SYNOPSIS
+
 ## BUGS
 
 ## CONTRIBUTING
