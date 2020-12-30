@@ -28,6 +28,10 @@ function love.update(dt)
   elseif Score.ai > 9 then
     evil_laugh:play()
   end
+
+  if love.keyboard.isDown("escape") then
+    love.event.quit(exitstatus)
+  end
 end
 
 function love.draw()
