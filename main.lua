@@ -20,7 +20,7 @@ function love.update(dt)
   Ball:update(dt)
   AI:update(dt)
 
-  gameStart()
+  gameRestart()
 end
 
 function love.draw()
@@ -50,7 +50,7 @@ function checkCollision(a, b)
   end
 end
 
-function gameStart()
+function gameRestart()
   if gameOver == true and love.keyboard.isDown("r") then
     Score.player = 0
     Score.ai = 0
