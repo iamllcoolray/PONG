@@ -12,7 +12,7 @@ This version of Pong is recreation of the famous 2D Atari game, but in space.
 
 ## BUGS
 
-- After the Player or AI scores the ball stays centered to the screen.
+- ~~After the Player or AI scores the ball stays centered to the screen.~~
 
 ## CONTRIBUTING
 
