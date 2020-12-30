@@ -1,7 +1,7 @@
-require("background")
-require("player")
-require("ball")
-require("ai")
+require("background/background")
+require("entities/player")
+require("entities/ball")
+require("entities/ai")
 
 function love.load()
   Background:load()
